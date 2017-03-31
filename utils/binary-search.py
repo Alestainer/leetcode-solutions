@@ -1,9 +1,19 @@
 def binary_search(array, number):
+    """Returns result of searching number in the array.
+    Array must be sorted
+    first return says if the number was found, the second - gives the coordinates of the number or the closest to the number"""
     pivot = len(array) / 2
-    if (array[pivot] > number & len(array) > 1):
-        return binary_search(array = array[:pivot], number = number)
-    elif (array[pivot] < number & len(array) > 1):
-        return binary_search(array = array[pivot:], number = number)
+    if (array[pivot] > number and len(array) > 1):
+        return binary_search(array=array[:pivot], number=number)[0], \
+               binary_search(array=array[:pivot], number=number)[1]
+    elif (array[pivot] < number and len(array) > 1):
+        return binary_search(array=array[pivot:], number=number)[0], \
+               binary_search(array=array[pivot:], number=number)[1] + pivot
     elif (array[pivot] == number):
-        return pivot
-    else
+        return True, pivot
+    else:
+        return False, pivot
+
+
+print(binary_search([1, 2, 3], 3))
+
