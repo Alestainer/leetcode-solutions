@@ -35,7 +35,7 @@ if (__name__ == 'main.py'):
         neighbors.append(set(stations[1:]))
     start, end = lines[-1]
     dictionary = dict(zip(vertexes, neighbors))
-    Solution(dictionary=dictionary).find_a_path(start=start, end=end)
+    sys.stdout.write(Solution(dictionary=dictionary).find_a_path(start=start, end=end))
 
 
 
